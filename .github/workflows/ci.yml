@@ -1,0 +1,15 @@
+name: CI Workflow with Variables
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print a variable
+        run: echo "Repository name is ${{ github.repository }}"
+
+      - name: Use custom environment variable
+        run: echo "Custom message: ${{ vars.MY_MESSAGE || 'Hello DevOps!' }}"
