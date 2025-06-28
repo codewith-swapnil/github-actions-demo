@@ -8,8 +8,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Print a variable
+      - name: Print repository name
         run: echo "Repository name is ${{ github.repository }}"
 
-      - name: Use custom environment variable
+      - name: Print custom message
         run: echo "Custom message: ${{ vars.MY_MESSAGE || 'Hello DevOps!' }}"
+        env:
+          MY_MESSAGE: ${{ vars.MY_MESSAGE || 'Hello DevOps!' }}  # Proper fallback
