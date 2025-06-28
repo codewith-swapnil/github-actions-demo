@@ -12,6 +12,7 @@ jobs:
         run: echo "Repository name is ${{ github.repository }}"
 
       - name: Print custom message
-        run: echo "Custom message: ${{ vars.MY_MESSAGE || 'Hello DevOps!' }}"
+        run: |
+          echo "Custom message: ${MY_MESSAGE}"
         env:
-          MY_MESSAGE: ${{ vars.MY_MESSAGE || 'Hello DevOps!' }}  # Proper fallback
+          MY_MESSAGE: ${{ vars.MY_MESSAGE != '' && vars.MY_MESSAGE || 'Hello DevOps!' }}
